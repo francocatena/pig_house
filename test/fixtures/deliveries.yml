@@ -1,0 +1,9 @@
+mother_1:
+  date: <%= 1.day.ago.to_date.to_s(:db) %>
+  born: 10
+  live: 10
+  dead: 0
+  mummified: 0
+  adopted: -1
+  low: 0
+  pig: mother

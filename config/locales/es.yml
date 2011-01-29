@@ -185,11 +185,20 @@
 
     # Translate model names. Used in Model.human_name().
     models:
+      delivery: 'Parto'
       pig: 'Cerdo'
       service: 'Servicio'
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     attributes:
+      delivery:
+        date: 'Fecha'
+        born: 'Nacidos'
+        live: 'Vivos'
+        dead: 'Muertos'
+        mummified: 'Momificados'
+        adopted: 'Adoptados'
+        low: 'Bajas'
       pig:
         tag: 'Etiqueta'
         birth: 'Nacimiento'
@@ -201,6 +210,16 @@
           other: 'Servicios'
           date: 'Fecha (servicio)'
           stallion: 'Macho (servicio)'
+        deliveries:
+          one: 'Parto'
+          other: 'Partos'
+          date: 'Fecha (parto)'
+          born: 'Nacidos (parto)'
+          live: 'Vivos (parto)'
+          dead: 'Muertos (parto)'
+          mummified: 'Momificados (parto)'
+          adopted: 'Adoptados (parto)'
+          low: 'Bajas (parto)'
       service:
         date: 'Fecha'
         stallion: 'Macho'
@@ -237,6 +256,7 @@
       too_short: 'es demasiado corto (%{count} caracteres mínimo)'
       wrong_length: 'no tiene la longitud correcta (%{count} caracteres exactos)'
       not_a_number: 'no es un número'
+      not_an_integer: 'no es un entero'
       greater_than: 'debe ser mayor que %{count}'
       greater_than_or_equal_to: 'debe ser mayor que o igual a %{count}'
       equal_to: 'debe ser igual a %{count}'

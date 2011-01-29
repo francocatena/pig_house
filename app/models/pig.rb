@@ -8,7 +8,11 @@ class Pig < ActiveRecord::Base
   # Relaciones
   has_many :services, :dependent => :destroy, :inverse_of => :pig,
     :order => "#{Service.table_name}.date ASC"
+  has_many :deliveries, :dependent => :destroy, :inverse_of => :pig,
+    :order => "#{Delivery.table_name}.date ASC"
 
   accepts_nested_attributes_for :services, :allow_destroy => true,
+    :reject_if => proc { |attributes| attributes['date'].blank? }
+  accepts_nested_attributes_for :deliveries, :allow_destroy => true,
     :reject_if => proc { |attributes| attributes['date'].blank? }
 end
