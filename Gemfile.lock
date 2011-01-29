@@ -85,7 +85,7 @@ GEM
     turn (0.8.1)
       ansi (>= 1.2.2)
     tzinfo (0.3.24)
-    validates_timeliness (3.0.4)
+    validates_timeliness (3.0.5)
       timeliness (~> 0.3.2)
     will_paginate (3.0.pre2)
 

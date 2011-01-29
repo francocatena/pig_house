@@ -1,0 +1,9 @@
+mother_S01:
+  date: <%= 1.day.ago.to_date.to_s(:db) %>
+  stallion: S01
+  pig: mother
+
+mother_S99:
+  date: <%= 4.months.ago.to_date.to_s(:db) %>
+  stallion: S99
+  pig: mother

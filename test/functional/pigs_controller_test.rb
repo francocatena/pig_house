@@ -21,14 +21,20 @@ class PigsControllerTest < ActionController::TestCase
     assert_template 'pigs/new'
   end
 
-  test 'should create pig' do
-    assert_difference('Pig.count') do
+  test 'should create pig and service' do
+    assert_difference(['Pig.count', 'Service.count']) do
       post :create, :pig => {
         :tag => 'New tag',
-        :birth => 10.days.ago.to_date,
+        :birth => 10.days.ago.to_date.to_s(:db),
         :genetics => 'New genetics',
         :group => 'New group',
-        :location => 'New location'
+        :location => 'New location',
+        :services_attributes => {
+          :new_1 => {
+            :date => Date.today.to_s(:db),
+            :stallion => 'S01'
+          }
+        }
       }
     end
 
@@ -52,13 +58,23 @@ class PigsControllerTest < ActionController::TestCase
   end
 
   test 'should update pig' do
-    put :update, :id => @pig.to_param, :pig => {
-      :tag => 'Updated tag',
-      :birth => 10.days.ago.to_date,
-      :genetics => 'Updated genetics',
-      :group => 'Updated group',
-      :location => 'Updated location'
-    }
+    assert_no_difference('Pig.count') do
+      assert_difference('Service.count') do
+        put :update, :id => @pig.to_param, :pig => {
+          :tag => 'Updated tag',
+          :birth => 10.days.ago.to_date,
+          :genetics => 'Updated genetics',
+          :group => 'Updated group',
+          :location => 'Updated location',
+          :services_attributes => {
+            :new_1 => {
+              :date => Date.today.to_s(:db),
+              :stallion => 'S01'
+            }
+          }
+        }
+      end
+    end
     assert_redirected_to pigs_path
     assert_equal 'Updated tag', @pig.reload.tag
   end

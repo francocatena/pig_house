@@ -127,6 +127,10 @@ div.actions, div.field {
   margin-bottom: 1em;
 }
 
+div.enumeration {
+    margin: .5em 0em;
+}
+
 div.field input[type="text"], div.field input[type="password"],
 div.field select, div.field textarea {
     font-size: inherit;
@@ -151,6 +155,12 @@ div.field input[type="checkbox"] + label {
 form.button_to input[type="submit"] {
     font-size: inherit;
     padding: 0em .5em;
+}
+
+h2.subtitle {
+    font-size: 1.2em;
+    border-bottom: 1px dotted #333333;
+    margin: 1em 0em;
 }
 
 input.field_with_errors, select.field_with_errors, text_area.field_with_errors {
@@ -246,6 +256,22 @@ table.list tbody tr.odd {
 
 table.list tbody tr.odd:hover, table.list tbody tr.even:hover {
     background: #cecece;
+}
+
+table.summary {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0em;
+}
+
+table.summary td {
+    padding: .2em .5em;
+}
+
+table.summary th {
+    text-align: left;
+    padding: .4em .5em;
+    border-bottom: 1px dotted #333333;
 }
 
 .bold {

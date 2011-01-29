@@ -21,7 +21,44 @@
     <%= f.label :location %>
     <%= f.text_field :location, :maxlength => 255 %>
   </div>
+
+  <h2 class="subtitle">
+    <%= Pig.human_attribute_name :services, :count => @pig.services.size %>
+  </h2>
+  
+  <%= f.fields_for :services, @pig.services.build do |s_f| %>
+    <div class="field">
+      <%= s_f.label :date %>
+      <%= s_f.calendar_date_select :date %>
+    </div>
+    <div class="field">
+      <%= s_f.label :stallion %>
+      <%= s_f.text_field :stallion, :maxlength => 255 %>
+    </div>
+  <% end %>
+
+  <% services = @pig.services.reject(&:new_record?) %>
+  <% unless services.blank? %>
+    <table class="summary">
+      <thead>
+        <tr>
+          <th><%= Service.human_attribute_name :date %></th>
+          <th><%= Service.human_attribute_name :stallion %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% services.each do |service| %>
+          <tr>
+            <td><%= l(service.date) %></td>
+            <td><%= service.stallion || '-' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
   <div class="actions">
+    <%= f.hidden_field :lock_version %>
     <%= f.submit %>
   </div>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110129005020) do
+ActiveRecord::Schema.define(:version => 20110129140920) do
 
   create_table "pigs", :force => true do |t|
     t.string   "tag",                         :null => false
@@ -24,5 +24,16 @@ ActiveRecord::Schema.define(:version => 20110129005020) do
   end
 
   add_index "pigs", ["tag"], :name => "index_pigs_on_tag", :unique => true
+
+  create_table "services", :force => true do |t|
+    t.date     "date",                        :null => false
+    t.string   "stallion"
+    t.integer  "pig_id"
+    t.integer  "lock_version", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services", ["pig_id"], :name => "index_services_on_pig_id"
 
 end

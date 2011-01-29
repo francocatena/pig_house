@@ -186,6 +186,7 @@
     # Translate model names. Used in Model.human_name().
     models:
       pig: 'Cerdo'
+      service: 'Servicio'
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     attributes:
@@ -195,6 +196,14 @@
         genetics: 'Genética'
         group: 'Grupo'
         location: 'Ubicación'
+        services:
+          one: 'Servicio'
+          other: 'Servicios'
+          date: 'Fecha (servicio)'
+          stallion: 'Macho (servicio)'
+      service:
+        date: 'Fecha'
+        stallion: 'Macho'
 
   # Active Model
   errors:
