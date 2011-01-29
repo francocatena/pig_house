@@ -1,0 +1,13 @@
+mother:
+  tag: M01
+  birth: <%= 10.months.ago.to_date.to_s(:db) %>
+  genetics: DAN 230
+  group: BR
+  location: 'CGB-7-40'
+
+stallion:
+  tag: S01
+  birth: <%= 20.months.ago.to_date.to_s(:db) %>
+  genetics: DAN 230
+  group: BR
+  location: 'CGB-5-30'

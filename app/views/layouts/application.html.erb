@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title><%= [t(:app_name), @title].compact.join(' | ') %></title>
+  <%= default_stylesheets %>
+  <%= default_javascripts %>
+  <%= csrf_meta_tag %>
+  <%= javascript_tag do %>
+    <%= yield :js_extra %>
+  <% end %>
+</head>
+<body>
+  <div id="loading" style="display: none;">
+    <p><%= t(:'messages.loading') %></p>
+  </div>
+  <div id="main_menu">
+    <%= render :partial => 'shared/menu' %>
+  </div>
+  <div id="main_container">
+    <%= yield %>
+  </div>
+  <%= render :partial => 'shared/notice' if flash.notice %>
+  <%= render :partial => 'shared/alert' if flash.alert %>
+</body>
+</html>

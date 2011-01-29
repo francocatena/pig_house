@@ -1,0 +1,27 @@
+<%= form_for(@pig) do |f| %>
+  <%= show_error_messages(@pig) %>
+
+  <div class="field">
+    <%= f.label :tag %>
+    <%= f.text_field :tag, :maxlength => 255 %>
+  </div>
+  <div class="field">
+    <%= f.label :birth %>
+    <%= f.calendar_date_select :birth %>
+  </div>
+  <div class="field">
+    <%= f.label :genetics %>
+    <%= f.text_field :genetics, :maxlength => 255 %>
+  </div>
+  <div class="field">
+    <%= f.label :group %>
+    <%= f.text_field :group, :maxlength => 255 %>
+  </div>
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location, :maxlength => 255 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

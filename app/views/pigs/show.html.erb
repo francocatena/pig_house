@@ -1,0 +1,29 @@
+<p>
+  <b><%= Pig.human_attribute_name :tag %>:</b>
+  <%= @pig.tag %>
+</p>
+
+<p>
+  <b><%= Pig.human_attribute_name :birth %>:</b>
+  <%= l(@pig.birth, :format => :long) if @pig.birth %>
+</p>
+
+<p>
+  <b><%= Pig.human_attribute_name :genetics %>:</b>
+  <%= @pig.genetics %>
+</p>
+
+<p>
+  <b><%= Pig.human_attribute_name :group %>:</b>
+  <%= @pig.group %>
+</p>
+
+<p>
+  <b><%= Pig.human_attribute_name :location %>:</b>
+  <%= @pig.location %>
+</p>
+
+<nav class="links">
+  <%= link_to t(:'label.edit'), edit_pig_path(@pig) %> |
+  <%= link_to t(:'label.list'), pigs_path %>
+</nav>

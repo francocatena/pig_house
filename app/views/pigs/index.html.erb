@@ -1,0 +1,33 @@
+<table class="list">
+  <thead>
+    <tr>
+      <th><%= Pig.human_attribute_name :tag %></th>
+      <th><%= Pig.human_attribute_name :birth %></th>
+      <th><%= Pig.human_attribute_name :genetics %></th>
+      <th><%= Pig.human_attribute_name :group %></th>
+      <th><%= Pig.human_attribute_name :location %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pigs.each do |pig| %>
+      <tr class="<%= cycle(:even, :odd) %>">
+        <td><%= pig.tag %></td>
+        <td><%= l(pig.birth) if pig.birth %></td>
+        <td><%= pig.genetics %></td>
+        <td><%= pig.group %></td>
+        <td><%= pig.location %></td>
+        <td><%= link_to t(:'label.show'), pig %></td>
+        <td><%= link_to t(:'label.edit'), edit_pig_path(pig) %></td>
+        <td><%= button_to t(:'label.delete'), pig,
+          :confirm => t(:'messages.confirmation'), :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<nav class="links">
+  <%= pagination_links(@pigs) %>
+  <%= link_to t(:'label.new'), new_pig_path %>
+</nav>

@@ -1,0 +1,7 @@
+<% current_controller = controller.controller_name.to_sym %>
+<nav id="menu_links">
+  <ul>
+    <%= content_tag(:li, link_to(t(:pigs, :scope => :menu), pigs_path),
+      :class => (:selected if current_controller == :pigs)) %>
+  </ul>
+</nav>
