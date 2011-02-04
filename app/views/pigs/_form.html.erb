@@ -1,4 +1,4 @@
-<%= form_for(@pig) do |f| %>
+<%= form_for(@pig, :html => {:id => :pig_form}) do |f| %>
   <%= show_error_messages(@pig) %>
 
   <div class="field">
@@ -25,100 +25,56 @@
   <h2 class="subtitle">
     <%= Pig.human_attribute_name :services, :count => @pig.services.size %>
   </h2>
-  
-  <%= f.fields_for :services, @pig.services.new do |s_f| %>
-    <div class="field">
-      <%= s_f.label :date %>
-      <%= s_f.calendar_date_select :date %>
-    </div>
-    <div class="field">
-      <%= s_f.label :stallion %>
-      <%= s_f.text_field :stallion, :maxlength => 255 %>
-    </div>
-  <% end %>
 
-  <% unless @pig.services.blank? %>
-    <table class="summary">
-      <thead>
+  <table id="services" class="summary">
+    <thead>
+      <tr>
+        <th><%= Service.human_attribute_name :date %></th>
+        <th><%= Service.human_attribute_name :stallion %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pig.services.build %>
+      <%= f.fields_for :services do |s_f| %>
         <tr>
-          <th><%= Service.human_attribute_name :date %></th>
-          <th><%= Service.human_attribute_name :stallion %></th>
+          <td><%= s_f.calendar_date_select :date %><%= s_f.hidden_field :id %></td>
+          <td><%= s_f.text_field :stallion, :maxlength => 255 %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @pig.services.each do |service| %>
-          <tr>
-            <td><%= l(service.date) %></td>
-            <td><%= service.stallion || '-' %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
   <h2 class="subtitle">
     <%= Pig.human_attribute_name :deliveries, :count => @pig.deliveries.size %>
   </h2>
 
-  <%= f.fields_for :deliveries, @pig.deliveries.new do |d_f| %>
-    <div class="field">
-      <%= d_f.label :date %>
-      <%= d_f.calendar_date_select :date %>
-    </div>
-    <div class="field">
-      <%= d_f.label :born %>
-      <%= d_f.text_field :born, :maxlength => 10 %>
-    </div>
-    <div class="field">
-      <%= d_f.label :live %>
-      <%= d_f.text_field :live, :maxlength => 10 %>
-    </div>
-    <div class="field">
-      <%= d_f.label :dead %>
-      <%= d_f.text_field :dead, :maxlength => 10 %>
-    </div>
-    <div class="field">
-      <%= d_f.label :mummified %>
-      <%= d_f.text_field :mummified, :maxlength => 10 %>
-    </div>
-    <div class="field">
-      <%= d_f.label :adopted %>
-      <%= d_f.text_field :adopted, :maxlength => 10 %>
-    </div>
-    <div class="field">
-      <%= d_f.label :low %>
-      <%= d_f.text_field :low, :maxlength => 10 %>
-    </div>
-  <% end %>
-
-  <% unless @pig.deliveries.blank? %>
-    <table class="summary">
-      <thead>
+  <table id="deliveries" class="summary">
+    <thead>
+      <tr>
+        <th><%= Delivery.human_attribute_name :date %></th>
+        <th><%= Delivery.human_attribute_name :born %></th>
+        <th><%= Delivery.human_attribute_name :live %></th>
+        <th><%= Delivery.human_attribute_name :dead %></th>
+        <th><%= Delivery.human_attribute_name :mummified %></th>
+        <th><%= Delivery.human_attribute_name :adopted %></th>
+        <th><%= Delivery.human_attribute_name :low %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pig.deliveries.build %>
+      <%= f.fields_for :deliveries do |d_f| %>
         <tr>
-          <th><%= Delivery.human_attribute_name :date %></th>
-          <th><%= Delivery.human_attribute_name :born %></th>
-          <th><%= Delivery.human_attribute_name :live %></th>
-          <th><%= Delivery.human_attribute_name :dead %></th>
-          <th><%= Delivery.human_attribute_name :mummified %></th>
-          <th><%= Delivery.human_attribute_name :adopted %></th>
-          <th><%= Delivery.human_attribute_name :low %></th>
+          <td><%= d_f.calendar_date_select :date %><%= d_f.hidden_field :id %></td>
+          <td><%= d_f.text_field :born, :maxlength => 10 %></td>
+          <td><%= d_f.text_field :live, :maxlength => 10 %></td>
+          <td><%= d_f.text_field :dead, :maxlength => 10 %></td>
+          <td><%= d_f.text_field :mummified, :maxlength => 10 %></td>
+          <td><%= d_f.text_field :adopted, :maxlength => 10 %></td>
+          <td><%= d_f.text_field :low, :maxlength => 10 %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @pig.deliveries.each do |delivery| %>
-          <tr>
-            <td><%= l(delivery.date) %></td>
-            <td><%= delivery.born %></td>
-            <td><%= delivery.live %></td>
-            <td><%= delivery.dead %></td>
-            <td><%= delivery.mummified %></td>
-            <td><%= delivery.adopted %></td>
-            <td><%= delivery.low %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
   <div class="actions">
     <%= f.hidden_field :lock_version %>
