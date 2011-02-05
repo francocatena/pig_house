@@ -1,25 +1,48 @@
 <%= form_for(@pig, :html => {:id => :pig_form}) do |f| %>
   <%= show_error_messages(@pig) %>
 
-  <div class="field">
-    <%= f.label :tag %>
-    <%= f.text_field :tag, :maxlength => 255 %>
-  </div>
-  <div class="field">
-    <%= f.label :birth %>
-    <%= f.calendar_date_select :birth %>
-  </div>
-  <div class="field">
-    <%= f.label :genetics %>
-    <%= f.text_field :genetics, :maxlength => 255 %>
-  </div>
-  <div class="field">
-    <%= f.label :group %>
-    <%= f.text_field :group, :maxlength => 255 %>
-  </div>
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location, :maxlength => 255 %>
+  <div class="form_with_column_container">
+    <div class="form_left">
+      <div class="field">
+        <%= f.label :tag %>
+        <%= f.text_field :tag, :maxlength => 255 %>
+      </div>
+      <div class="field">
+        <%= f.label :father %>
+        <%= f.text_field :father, :maxlength => 255 %>
+      </div>
+      <div class="field">
+        <%= f.label :mother %>
+        <%= f.text_field :mother, :maxlength => 255 %>
+      </div>
+      <div class="field">
+        <%= f.label :genetics %>
+        <%= f.text_field :genetics, :maxlength => 255 %>
+      </div>
+      <div class="field">
+        <%= f.label :status %>
+        <%= select_pig_status_field(f) %>
+      </div>
+    </div>
+
+    <div class="form_right">
+      <div class="field">
+        <%= f.label :birth %>
+        <%= f.calendar_date_select :birth %>
+      </div>
+      <div class="field">
+        <%= f.label :next_heat %>
+        <%= f.calendar_date_select :next_heat %>
+      </div>
+      <div class="field">
+        <%= f.label :group %>
+        <%= f.text_field :group, :maxlength => 255 %>
+      </div>
+      <div class="field">
+        <%= f.label :location %>
+        <%= f.text_field :location, :maxlength => 255 %>
+      </div>
+    </div>
   </div>
 
   <h2 class="subtitle">

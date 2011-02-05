@@ -5,8 +5,23 @@
   </p>
 
   <p>
+    <b><%= Pig.human_attribute_name :mother %>:</b>
+    <%= @pig.mother %>
+  </p>
+
+  <p>
+    <b><%= Pig.human_attribute_name :father %>:</b>
+    <%= @pig.father %>
+  </p>
+
+  <p>
     <b><%= Pig.human_attribute_name :birth %>:</b>
     <%= l(@pig.birth, :format => :long) if @pig.birth %>
+  </p>
+
+  <p>
+    <b><%= Pig.human_attribute_name :next_heat %>:</b>
+    <%= l(@pig.next_heat, :format => :long) if @pig.next_heat %>
   </p>
 
   <p>
@@ -22,6 +37,11 @@
   <p>
     <b><%= Pig.human_attribute_name :location %>:</b>
     <%= @pig.location %>
+  </p>
+
+  <p>
+    <b><%= Pig.human_attribute_name :status %>:</b>
+    <%= @pig.status_text %>
   </p>
 
   <% unless @pig.deliveries.empty? %>

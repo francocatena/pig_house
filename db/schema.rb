@@ -29,12 +29,16 @@ ActiveRecord::Schema.define(:version => 20110204212631) do
   add_index "deliveries", ["pig_id"], :name => "index_deliveries_on_pig_id"
 
   create_table "pigs", :force => true do |t|
-    t.string   "tag",                         :null => false
+    t.string   "tag",                                      :null => false
     t.date     "birth"
+    t.date     "next_heat"
+    t.string   "father"
+    t.string   "mother"
     t.string   "genetics"
+    t.string   "status",       :limit => 1
     t.string   "group"
     t.string   "location"
-    t.integer  "lock_version", :default => 0
+    t.integer  "lock_version",              :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -153,6 +153,21 @@ div.field input[type="checkbox"] + label {
     margin-left: .5em;
 }
 
+div.form_left {
+    float: left;
+    width: 48%;
+    margin-right: 1%;
+}
+
+div.form_right {
+    float: right;
+    width: 48%;
+}
+
+div.form_with_column_container {
+    clear: both;
+}
+
 div.readonly_data p {
     font-size: 1.2em;
     margin-bottom: .5em;
@@ -164,6 +179,7 @@ form.button_to input[type="submit"] {
 }
 
 h2.subtitle {
+    clear: both;
     font-size: 1.2em;
     border-bottom: 2px dotted #00aeef;
     margin-top: 1em;

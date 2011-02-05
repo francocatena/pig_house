@@ -27,8 +27,12 @@ class PigsControllerTest < ActionController::TestCase
     assert_difference(counts) do
       post :create, :pig => {
         :tag => 'New tag',
+        :father => 'Piggy father',
+        :mother => 'Piggy mother',
         :birth => 10.days.ago.to_date.to_s(:db),
+        :next_heat => '',
         :genetics => 'New genetics',
+        :status => Pig::STATUSES[:ready],
         :group => 'New group',
         :location => 'New location',
         :services_attributes => {
@@ -84,8 +88,12 @@ class PigsControllerTest < ActionController::TestCase
       assert_difference(['Service.count', 'Delivery.count', 'Weaning.count']) do
         put :update, :id => @pig.to_param, :pig => {
           :tag => 'Updated tag',
-          :birth => 10.days.ago.to_date,
+          :father => 'Piggy father',
+          :mother => 'Piggy mother',
+          :birth => 10.days.ago.to_date.to_s(:db),
+          :next_heat => '',
           :genetics => 'Updated genetics',
+          :status => Pig::STATUSES[:ready],
           :group => 'Updated group',
           :location => 'Updated location',
           :services_attributes => {

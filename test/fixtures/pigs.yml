@@ -1,13 +1,20 @@
 mother:
   tag: M01
+  father: Piggy father
+  mother: Piggy mother
   birth: <%= 10.months.ago.to_date.to_s(:db) %>
+  next_heat: <%= 10.days.from_now.to_date.to_s(:db) %>
   genetics: DAN 230
+  status: <%= Pig::STATUSES[:ready] %>
   group: BR
   location: 'CGB-7-40'
 
 stallion:
   tag: S01
+  father: Stallion piggy father
+  mother: Stallion piggy mother
   birth: <%= 20.months.ago.to_date.to_s(:db) %>
   genetics: DAN 230
+  status: <%= Pig::STATUSES[:ready] %>
   group: BR
   location: 'CGB-5-30'

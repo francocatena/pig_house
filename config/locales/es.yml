@@ -202,13 +202,17 @@
         low: 'Bajas'
       pig:
         tag: 'Etiqueta'
+        father: 'Padre'
+        mother: 'Madre'
         birth: 'Nacimiento'
+        next_heat: 'Próximo celo'
         genetics: 'Genética'
+        status: 'Estado'
         group: 'Grupo'
         location: 'Ubicación'
         deliveries:
           one: 'Parto'
-          other: 'Partos'
+          other: 'Partos (%{count})'
           date: 'Fecha (parto)'
           born: 'Nacidos (parto)'
           live: 'Vivos (parto)'
@@ -218,12 +222,12 @@
           low: 'Bajas (parto)'
         services:
           one: 'Servicio'
-          other: 'Servicios'
+          other: 'Servicios (%{count})'
           date: 'Fecha (servicio)'
           stallion: 'Macho (servicio)'
         weanings:
           one: 'Destete'
-          other: 'Destetes'
+          other: 'Destetes (%{count})'
           date: 'Fecha (destete)'
           weaned: 'Destetados (destete)'
           nursed_weaned: 'Destetados nursed (destete)'
@@ -347,3 +351,8 @@
       correctly_created: 'Cerdo agregado correctamente.'
       correctly_updated: 'Cerdo actualizado correctamente.'
       stale_object_error: 'El cerdo no pudo ser actualizado, intente nuevamente.'
+      status:
+        pregnant: 'Preñada'
+        ready: 'Disponible'
+        served: 'Servida'
+        indisposed: 'No disponible'
