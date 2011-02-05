@@ -168,6 +168,16 @@ div.form_with_column_container {
     clear: both;
 }
 
+div.information {
+    margin: 1em 0em;
+    padding: .5em 0em;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-style: italic;
+    border-top: 2px dotted #00aeef;
+    border-bottom: 2px dotted #00aeef;
+}
+
 div.readonly_data p {
     font-size: 1.2em;
     margin-bottom: .5em;

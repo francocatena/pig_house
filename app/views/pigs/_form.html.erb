@@ -127,6 +127,12 @@
     </tbody>
   </table>
 
+  <% if @pig.next_expected_delivery_date %>
+    <div class="information">
+      <span><%= show_next_expected_delivery_date %></span>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.hidden_field :lock_version %>
     <%= f.submit %>

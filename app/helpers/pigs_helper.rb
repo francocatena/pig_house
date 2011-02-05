@@ -6,4 +6,12 @@ module PigsHelper
 
     form.select :status, statuses, :prompt => true
   end
+
+  def show_next_expected_delivery_date
+    t(
+      :next_expected_delivery_date,
+      :date => l(@pig.next_expected_delivery_date, :format => :long),
+      :scope => [:view, :pigs]
+    )
+  end
 end

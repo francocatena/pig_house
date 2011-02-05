@@ -37,8 +37,6 @@ class PigTest < ActiveSupport::TestCase
         :group => 'New group',
         :location => 'New location'
       )
-
-      p @pig.errors.full_messages
     end
   end
 
@@ -125,6 +123,23 @@ class PigTest < ActiveSupport::TestCase
     assert_equal 1, @pig.errors.count
     assert_equal [error_message_from_model(@pig, :status, :inclusion)],
       @pig.errors[:status]
+  end
+
+  test 'next expected delivery date' do
+    service = nil
+    @pig.services.clear
+    assert_nil @pig.next_expected_delivery_date(true)
+    assert_difference '@pig.services.count' do
+      service = @pig.services.create(:date => 10.day.ago.to_date)
+    end
+    assert @pig.update_attributes(:status => Pig::STATUSES[:served])
+    assert_equal 101.days.from_now.to_date, @pig.next_expected_delivery_date(true)
+    assert service.update_attributes(:date => 115.days.ago.to_date)
+    assert_nil @pig.next_expected_delivery_date(true)
+    assert service.update_attributes(:date => 20.days.ago.to_date)
+    assert_equal 91.days.from_now.to_date, @pig.next_expected_delivery_date(true)
+    assert @pig.update_attributes(:status => Pig::STATUSES[:ready])
+    assert_nil @pig.next_expected_delivery_date(true)
   end
 
   test 'dynamic status functions' do

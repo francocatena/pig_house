@@ -38,6 +38,26 @@ class Pig < ActiveRecord::Base
     self.status ||= STATUSES[:ready]
   end
 
+  def next_expected_delivery_date(force_recalculate = false)
+    if force_recalculate || @expected_delivery_date.blank?
+      last_service_date = self.services.reject(&:new_record?).last.try(:date)
+      with_current_service = last_service_date &&
+        last_service_date > 120.days.ago.to_date
+
+      if (self.pregnant? || self.served?) && with_current_service
+        @expected_delivery_date = last_service_date + 111.days
+      else
+        @expected_delivery_date = nil
+      end
+
+      if @expected_delivery_date && @expected_delivery_date >= Date.today
+        @expected_delivery_date
+      end
+    else
+      @expected_delivery_date
+    end
+  end
+
   def status_text
     I18n.t(STATUSES.invert[self.status], :scope => [:view, :pigs, :status])
   end

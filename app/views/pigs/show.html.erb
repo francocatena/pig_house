@@ -128,6 +128,12 @@
       </tbody>
     </table>
   <% end %>
+
+  <% if @pig.next_expected_delivery_date %>
+    <div class="information">
+      <span><%= show_next_expected_delivery_date %></span>
+    </div>
+  <% end %>
 </div>
 
 <nav class="links">
