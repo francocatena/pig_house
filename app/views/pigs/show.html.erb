@@ -1,27 +1,114 @@
-<p>
-  <b><%= Pig.human_attribute_name :tag %>:</b>
-  <%= @pig.tag %>
-</p>
+<div id="pig_data" class="readonly_data">
+  <p>
+    <b><%= Pig.human_attribute_name :tag %>:</b>
+    <%= @pig.tag %>
+  </p>
 
-<p>
-  <b><%= Pig.human_attribute_name :birth %>:</b>
-  <%= l(@pig.birth, :format => :long) if @pig.birth %>
-</p>
+  <p>
+    <b><%= Pig.human_attribute_name :birth %>:</b>
+    <%= l(@pig.birth, :format => :long) if @pig.birth %>
+  </p>
 
-<p>
-  <b><%= Pig.human_attribute_name :genetics %>:</b>
-  <%= @pig.genetics %>
-</p>
+  <p>
+    <b><%= Pig.human_attribute_name :genetics %>:</b>
+    <%= @pig.genetics %>
+  </p>
 
-<p>
-  <b><%= Pig.human_attribute_name :group %>:</b>
-  <%= @pig.group %>
-</p>
+  <p>
+    <b><%= Pig.human_attribute_name :group %>:</b>
+    <%= @pig.group %>
+  </p>
 
-<p>
-  <b><%= Pig.human_attribute_name :location %>:</b>
-  <%= @pig.location %>
-</p>
+  <p>
+    <b><%= Pig.human_attribute_name :location %>:</b>
+    <%= @pig.location %>
+  </p>
+
+  <% unless @pig.deliveries.empty? %>
+    <h2 class="subtitle">
+      <%= Pig.human_attribute_name :deliveries, :count => @pig.deliveries.size %>
+    </h2>
+
+    <table id="deliveries" class="summary">
+      <thead>
+        <tr>
+          <th><%= Delivery.human_attribute_name :date %></th>
+          <th><%= Delivery.human_attribute_name :born %></th>
+          <th><%= Delivery.human_attribute_name :live %></th>
+          <th><%= Delivery.human_attribute_name :dead %></th>
+          <th><%= Delivery.human_attribute_name :mummified %></th>
+          <th><%= Delivery.human_attribute_name :adopted %></th>
+          <th><%= Delivery.human_attribute_name :low %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pig.deliveries.each do |delivery| %>
+          <tr>
+            <td><%= l(delivery.date) %></td>
+            <td><%= delivery.born %></td>
+            <td><%= delivery.live %></td>
+            <td><%= delivery.dead %></td>
+            <td><%= delivery.mummified %></td>
+            <td><%= delivery.adopted %></td>
+            <td><%= delivery.low %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% unless @pig.weanings.empty? %>
+    <h2 class="subtitle">
+      <%= Pig.human_attribute_name :weanings, :count => @pig.weanings.size %>
+    </h2>
+
+    <table id="weanings" class="summary">
+      <thead>
+        <tr>
+          <th><%= Weaning.human_attribute_name :date %></th>
+          <th><%= Weaning.human_attribute_name :weaned %></th>
+          <th><%= Weaning.human_attribute_name :nursed_weaned %></th>
+          <th><%= Weaning.human_attribute_name :age %></th>
+          <th><%= Weaning.human_attribute_name :average_weight %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pig.weanings.each do |weaning| %>
+          <tr>
+            <td><%= l(weaning.date) %></td>
+            <td><%= weaning.weaned %></td>
+            <td><%= weaning.nursed_weaned %></td>
+            <td><%= weaning.age %></td>
+            <td><%= weaning.average_weight %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% unless @pig.services.empty? %>
+    <h2 class="subtitle">
+      <%= Pig.human_attribute_name :services, :count => @pig.services.size %>
+    </h2>
+
+    <table id="services" class="summary">
+      <thead>
+        <tr>
+          <th><%= Service.human_attribute_name :date %></th>
+          <th><%= Service.human_attribute_name :stallion %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pig.services.each do |service| %>
+          <tr>
+            <td><%= l(service.date) %></td>
+            <td><%= service.stallion || '-' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
 
 <nav class="links">
   <%= link_to t(:'label.edit'), edit_pig_path(@pig) %> |
