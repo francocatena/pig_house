@@ -23,28 +23,6 @@
   </div>
 
   <h2 class="subtitle">
-    <%= Pig.human_attribute_name :services, :count => @pig.services.size %>
-  </h2>
-
-  <table id="services" class="summary">
-    <thead>
-      <tr>
-        <th><%= Service.human_attribute_name :date %></th>
-        <th><%= Service.human_attribute_name :stallion %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @pig.services.build %>
-      <%= f.fields_for :services do |s_f| %>
-        <tr>
-          <td><%= s_f.calendar_date_select :date %><%= s_f.hidden_field :id %></td>
-          <td><%= s_f.text_field :stallion, :maxlength => 255 %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <h2 class="subtitle">
     <%= Pig.human_attribute_name :deliveries, :count => @pig.deliveries.size %>
   </h2>
 
@@ -71,6 +49,56 @@
           <td><%= d_f.text_field :mummified, :maxlength => 10 %></td>
           <td><%= d_f.text_field :adopted, :maxlength => 10 %></td>
           <td><%= d_f.text_field :low, :maxlength => 10 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2 class="subtitle">
+    <%= Pig.human_attribute_name :weanings, :count => @pig.weanings.size %>
+  </h2>
+
+  <table id="weanings" class="summary">
+    <thead>
+      <tr>
+        <th><%= Weaning.human_attribute_name :date %></th>
+        <th><%= Weaning.human_attribute_name :weaned %></th>
+        <th><%= Weaning.human_attribute_name :nursed_weaned %></th>
+        <th><%= Weaning.human_attribute_name :age %></th>
+        <th><%= Weaning.human_attribute_name :average_weight %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pig.weanings.build %>
+      <%= f.fields_for :weanings do |w_f| %>
+        <tr>
+          <td><%= w_f.calendar_date_select :date %><%= w_f.hidden_field :id %></td>
+          <td><%= w_f.text_field :weaned, :maxlength => 10 %></td>
+          <td><%= w_f.text_field :nursed_weaned, :maxlength => 10 %></td>
+          <td><%= w_f.text_field :age, :maxlength => 10 %></td>
+          <td><%= w_f.text_field :average_weight, :maxlength => 10 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2 class="subtitle">
+    <%= Pig.human_attribute_name :services, :count => @pig.services.size %>
+  </h2>
+
+  <table id="services" class="summary">
+    <thead>
+      <tr>
+        <th><%= Service.human_attribute_name :date %></th>
+        <th><%= Service.human_attribute_name :stallion %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pig.services.build %>
+      <%= f.fields_for :services do |s_f| %>
+        <tr>
+          <td><%= s_f.calendar_date_select :date %><%= s_f.hidden_field :id %></td>
+          <td><%= s_f.text_field :stallion, :maxlength => 255 %></td>
         </tr>
       <% end %>
     </tbody>

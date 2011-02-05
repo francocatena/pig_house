@@ -188,6 +188,7 @@
       delivery: 'Parto'
       pig: 'Cerdo'
       service: 'Servicio'
+      weaning: 'Destete'
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     attributes:
@@ -205,11 +206,6 @@
         genetics: 'Genética'
         group: 'Grupo'
         location: 'Ubicación'
-        services:
-          one: 'Servicio'
-          other: 'Servicios'
-          date: 'Fecha (servicio)'
-          stallion: 'Macho (servicio)'
         deliveries:
           one: 'Parto'
           other: 'Partos'
@@ -220,9 +216,28 @@
           mummified: 'Momificados (parto)'
           adopted: 'Adoptados (parto)'
           low: 'Bajas (parto)'
+        services:
+          one: 'Servicio'
+          other: 'Servicios'
+          date: 'Fecha (servicio)'
+          stallion: 'Macho (servicio)'
+        weanings:
+          one: 'Destete'
+          other: 'Destetes'
+          date: 'Fecha (destete)'
+          weaned: 'Destetados (destete)'
+          nursed_weaned: 'Destetados nursed (destete)'
+          age: 'Edad (días) (destete)'
+          average_weight: 'Peso promedio (destete)'
       service:
         date: 'Fecha'
         stallion: 'Macho'
+      weaning:
+        date: 'Fecha'
+        weaned: 'Destetados'
+        nursed_weaned: 'Destetados nursed'
+        age: 'Edad (días)'
+        average_weight: 'Peso promedio'
 
   # Active Model
   errors:

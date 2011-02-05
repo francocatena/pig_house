@@ -1,0 +1,15 @@
+recent:
+  date: <%= 2.days.ago.to_date.to_s(:db) %>
+  weaned: 10
+  nursed_weaned: 0
+  age: 21
+  average_weight: 2.50
+  pig: mother
+
+stale:
+  date: <%= 150.days.ago.to_date.to_s(:db) %>
+  weaned: 11
+  nursed_weaned: 1
+  age: 21
+  average_weight: 2.30
+  pig: mother

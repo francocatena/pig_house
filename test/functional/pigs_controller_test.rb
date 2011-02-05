@@ -22,7 +22,9 @@ class PigsControllerTest < ActionController::TestCase
   end
 
   test 'should create pig and service' do
-    assert_difference(['Pig.count', 'Service.count', 'Delivery.count']) do
+    counts = ['Pig.count', 'Service.count', 'Delivery.count', 'Weaning.count']
+
+    assert_difference(counts) do
       post :create, :pig => {
         :tag => 'New tag',
         :birth => 10.days.ago.to_date.to_s(:db),
@@ -44,6 +46,15 @@ class PigsControllerTest < ActionController::TestCase
             :mummified => '0',
             :adopted => '-1',
             :low => '0'
+          }
+        },
+        :weanings_attributes => {
+          :new_1 => {
+            :date => Date.today.to_s(:db),
+            :weaned => '12',
+            :nursed_weaned => '1',
+            :age => '20',
+            :average_weight => '1.5'
           }
         }
       }
@@ -70,7 +81,7 @@ class PigsControllerTest < ActionController::TestCase
 
   test 'should update pig' do
     assert_no_difference('Pig.count') do
-      assert_difference(['Service.count', 'Delivery.count']) do
+      assert_difference(['Service.count', 'Delivery.count', 'Weaning.count']) do
         put :update, :id => @pig.to_param, :pig => {
           :tag => 'Updated tag',
           :birth => 10.days.ago.to_date,
@@ -81,6 +92,10 @@ class PigsControllerTest < ActionController::TestCase
             :new_1 => {
               :date => Date.today.to_s(:db),
               :stallion => 'S01'
+            },
+            # Discarded
+            :new_2 => {
+              :date => ''
             }
           },
           :deliveries_attributes => {
@@ -92,6 +107,23 @@ class PigsControllerTest < ActionController::TestCase
               :mummified => '0',
               :adopted => '-1',
               :low => '0'
+            },
+            # Discarded
+            :new_2 => {
+              :date => ''
+            }
+          },
+          :weanings_attributes => {
+            :new_1 => {
+              :date => Date.today.to_s(:db),
+              :weaned => '12',
+              :nursed_weaned => '1',
+              :age => '20',
+              :average_weight => '1.5'
+            },
+            # Discarded
+            :new_2 => {
+              :date => ''
             }
           }
         }

@@ -3,7 +3,8 @@ class Delivery < ActiveRecord::Base
   validates :date, :born, :live, :dead, :mummified, :adopted, :low,
     :presence => true
   validates :born, :live, :dead, :mummified, :adopted, :low,
-    :numericality => {:only_integer => true}
+    :numericality => {:only_integer => true},
+    :allow_nil => true, :allow_blank => true
   validates_date :date, :allow_nil => true, :allow_blank => true
 
   # Relaciones

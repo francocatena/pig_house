@@ -54,10 +54,28 @@ class DeliveryTest < ActiveSupport::TestCase
   # Prueba que las validaciones del modelo se cumplan como es esperado
   test 'validates blank attributes' do
     @delivery.date = nil
+    @delivery.born = nil
+    @delivery.live = nil
+    @delivery.dead = nil
+    @delivery.mummified = nil
+    @delivery.adopted = nil
+    @delivery.low = nil
     assert @delivery.invalid?
-    assert_equal 1, @delivery.errors.count
+    assert_equal 7, @delivery.errors.count
     assert_equal [error_message_from_model(@delivery, :date, :blank)],
       @delivery.errors[:date]
+    assert_equal [error_message_from_model(@delivery, :born, :blank)],
+      @delivery.errors[:born]
+    assert_equal [error_message_from_model(@delivery, :live, :blank)],
+      @delivery.errors[:live]
+    assert_equal [error_message_from_model(@delivery, :dead, :blank)],
+      @delivery.errors[:dead]
+    assert_equal [error_message_from_model(@delivery, :mummified, :blank)],
+      @delivery.errors[:mummified]
+    assert_equal [error_message_from_model(@delivery, :adopted, :blank)],
+      @delivery.errors[:adopted]
+    assert_equal [error_message_from_model(@delivery, :low, :blank)],
+      @delivery.errors[:low]
   end
 
   # Prueba que las validaciones del modelo se cumplan como es esperado
